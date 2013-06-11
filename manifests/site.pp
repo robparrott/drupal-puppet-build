@@ -10,6 +10,8 @@ node default {
   class { 'apache::mod::ssl': }
   class { 'apache::mod::php': }
 
+  class { 'memcached': }
+
   apache::vhost { $fqdn:
     vhost_name => $fqdn,
     port => 80,

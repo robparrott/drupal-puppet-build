@@ -5,6 +5,9 @@ mod "puppetlabs/apache"
 mod "puppetlabs/firewall"
 mod "puppetlabs/mysql"
 
+mod "memcached",
+  :git => "git://github.com/saz/puppet-memcached.git"
+
 mod "varnish",
   :git => "git://github.com/evenup/evenup-varnish.git"
 
