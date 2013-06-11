@@ -1,8 +1,7 @@
 node default {
 
   include stdlib
-           
-  class { ''}                                                                                                                                                                   
+                                                                                                                                                                             
   class { 'mysql::server': }
   class { 'mysql::php':    }
   
@@ -14,14 +13,22 @@ node default {
 
   apache::vhost { $fqdn:
     vhost_name => $fqdn,
-    port => 80,
-    docroot => '/var/www/wordpress'
+    port => 8080,
+    docroot => '/var/www/drupal'
   }
   
+    
  class { 'varnish':
-    vcl_content => template('myapp/myvcl.erb')
+    vcl_content => template('default.vcl.erb')
+  }
+
+  include drupal
+  drupal::core { '7.21':
+    path => '/var/www/drupal',
   }
   
-
+#  class { 'drush': }
+  class { 'drupal': }
+  
 
 }

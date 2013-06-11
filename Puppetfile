@@ -10,7 +10,7 @@ mod "memcached",
 
 mod "varnish",
   :git => "git://github.com/evenup/evenup-varnish.git"
-
+  
 mod "concat",
   :git => "git://github.com/ripienaar/puppet-concat.git"
 

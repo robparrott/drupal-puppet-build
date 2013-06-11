@@ -8,8 +8,8 @@
 
 # call this "default" or "drupal"?
 backend default {
-  .host = "<%= backend_host %>";
-  .port = "<%= backend_port %>";
+  .host = "127.0.0.1";
+  .port = "8080";
   .connect_timeout = 600s;
   .first_byte_timeout = 600s;
   .between_bytes_timeout = 600s;
@@ -17,18 +17,15 @@ backend default {
   # Not sure if this is still needed/useful  
   .probe = {
     .url = "/";
-    .interval = <%= probe_interval %>;
-    .timeout  = <%= probe_timeout %>;
-    .window   = <%= probe_window %>;
+    .interval = 30s;
+    .timeout  = 10s;
+    .window   = 5;
     .threshold = 3;
   }
 }
 
 acl purge {
   "localhost";
-<% purge_ips.each do |ip| -%>
-   "<%= ip %>";
-<% end -%>
 }
 
 sub vcl_recv {
